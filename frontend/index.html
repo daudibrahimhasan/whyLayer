@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>whyLayer – Decision Intelligence</title>
+
+    <!--
+      Content Security Policy:
+      - API calls only to our own backend (localhost:8000 for dev).
+      - No inline scripts. No eval. No external API SDKs loaded client-side.
+      IMPORTANT: Tighten connect-src to your production domain before deploying.
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        script-src 'self' https://esm.sh;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        font-src 'self' https://fonts.gstatic.com;
+        img-src 'self' https://lh3.googleusercontent.com data:;
+        connect-src 'self' http://localhost:8000 http://127.0.0.1:8000;
+        frame-src 'none';
+        object-src 'none';
+      "
+    />
+
+    <link rel="stylesheet" href="index.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--
+      Importmap: Only React is loaded from CDN.
+      @google/genai is intentionally REMOVED — all LLM calls go through the backend.
+      Never put API keys or LLM SDKs in the browser.
+    -->
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://esm.sh/react@^19.0.0",
+          "react/": "https://esm.sh/react@^19.0.0/",
+          "react-dom/": "https://esm.sh/react-dom@^19.0.0/"
+        }
+      }
+    </script>
+
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="index.tsx"></script>
+  </body>
+</html>

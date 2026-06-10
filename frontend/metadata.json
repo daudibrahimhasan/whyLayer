@@ -1,0 +1,6 @@
+{
+  "name": "Go/No-Go Intelligence",
+  "description": "Critical decision analysis powered by Gemini 3 Pro and real-world search grounding.",
+  "requestFramePermissions": [],
+  "prompt": "I'm weighing a big decision. I need a critical, data-driven analysis of the pros and cons."
+}
